@@ -331,69 +331,124 @@ function EditModal({item,onClose,onSave}) {
 // ─── ESCÁNER QR ──────────────────────────────────────────
 function QRScanner({items,onClose,onItem}) {
   const videoRef=useRef(null);
+  const canvasRef=useRef(null);
   const [error,setError]=useState("");
   const [manual,setManual]=useState("");
-  const [scanning,setScanning]=useState(true);
+  const [loaded,setLoaded]=useState(false);
+  const [scanning,setScanning]=useState(false);
+  const rafRef=useRef(null);
+  const streamRef=useRef(null);
 
   useEffect(()=>{
-    let stream; let interval;
+    // Cargar jsQR dinámicamente
+    if(window.jsQR){ setLoaded(true); return; }
+    const script=document.createElement("script");
+    script.src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js";
+    script.onload=()=>setLoaded(true);
+    script.onerror=()=>setError("No se pudo cargar el escáner. Usa el campo manual.");
+    document.head.appendChild(script);
+    return ()=>{ try{document.head.removeChild(script)}catch(e){} };
+  },[]);
+
+  useEffect(()=>{
+    if(!loaded) return;
+    let active=true;
     const start=async()=>{
       try {
-        stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"environment"}});
-        if(videoRef.current) videoRef.current.srcObject=stream;
-        if("BarcodeDetector" in window) {
-          const det=new window.BarcodeDetector({formats:["qr_code"]});
-          interval=setInterval(async()=>{
-            if(videoRef.current?.readyState===4) {
-              try {
-                const codes=await det.detect(videoRef.current);
-                if(codes.length>0) handleCode(codes[0].rawValue);
-              } catch(e){}
-            }
-          },600);
-        } else setError("Escáner automático no disponible. Introduce el código manualmente.");
-      } catch(e){ setError("No se puede acceder a la cámara. Introduce el código manualmente."); }
+        const stream=await navigator.mediaDevices.getUserMedia({
+          video:{facingMode:"environment",width:{ideal:1280},height:{ideal:720}}
+        });
+        streamRef.current=stream;
+        if(videoRef.current){
+          videoRef.current.srcObject=stream;
+          videoRef.current.play();
+          setScanning(true);
+          tick(active);
+        }
+      } catch(e){
+        setError("No se puede acceder a la cámara. Usa el campo manual abajo.");
+      }
     };
     start();
-    return()=>{ stream?.getTracks().forEach(t=>t.stop()); if(interval)clearInterval(interval); };
+    return ()=>{
+      active=false;
+      if(rafRef.current) cancelAnimationFrame(rafRef.current);
+      streamRef.current?.getTracks().forEach(t=>t.stop());
+    };
+  },[loaded]);
+
+  const tick=useCallback((active)=>{
+    if(!active) return;
+    const video=videoRef.current;
+    const canvas=canvasRef.current;
+    if(video&&canvas&&video.readyState===4&&window.jsQR){
+      const ctx=canvas.getContext("2d");
+      canvas.width=video.videoWidth;
+      canvas.height=video.videoHeight;
+      ctx.drawImage(video,0,0,canvas.width,canvas.height);
+      const img=ctx.getImageData(0,0,canvas.width,canvas.height);
+      const code=window.jsQR(img.data,img.width,img.height,{inversionAttempts:"dontInvert"});
+      if(code?.data){
+        handleCode(code.data);
+        return;
+      }
+    }
+    rafRef.current=requestAnimationFrame(()=>tick(active));
   },[]);
 
   const handleCode=useCallback(code=>{
-    setScanning(false);
-    const it=items.find(i=>i.id===code||i.ubicacion===code||i.nombre.toLowerCase()===code.toLowerCase());
-    if(it) { onItem(it); onClose(); }
-    else setError(`Código "${code}" no encontrado en el inventario.`);
-  },[items]);
+    streamRef.current?.getTracks().forEach(t=>t.stop());
+    if(rafRef.current) cancelAnimationFrame(rafRef.current);
+    const trimmed=code.trim();
+    const it=items.find(i=>i.id===trimmed||i.ubicacion===trimmed);
+    if(it){ onItem(it); onClose(); }
+    else setError(`Código "${trimmed}" no encontrado. Prueba con el campo manual.`);
+  },[items,onItem,onClose]);
 
   const tryManual=()=>{ if(manual.trim()) handleCode(manual.trim()); };
 
   return (
     <div style={{position:"absolute",inset:0,background:"#000",zIndex:400,display:"flex",flexDirection:"column"}}>
+      <canvas ref={canvasRef} style={{display:"none"}}/>
       <div style={{padding:"14px 16px",display:"flex",alignItems:"center",justifyContent:"space-between",flexShrink:0}}>
         <span style={{color:"#fff",fontSize:16,fontWeight:700}}>Escáner QR</span>
         <button onClick={onClose} style={{background:"rgba(255,255,255,0.15)",border:"none",borderRadius:8,cursor:"pointer",padding:8,display:"flex"}}><X size={18} color="#fff"/></button>
       </div>
-      {scanning&&(
-        <div style={{flex:1,position:"relative",display:"flex",alignItems:"center",justifyContent:"center"}}>
-          <video ref={videoRef} autoPlay playsInline muted style={{width:"100%",height:"100%",objectFit:"cover"}}/>
-          <div style={{position:"absolute",width:220,height:220,border:"3px solid #4FA800",borderRadius:16,
-            boxShadow:"0 0 0 2000px rgba(0,0,0,0.5)"}}/>
-          <div style={{position:"absolute",bottom:20,color:"rgba(255,255,255,0.7)",fontSize:13}}>
-            Apunta al código QR del artículo o ubicación
-          </div>
-        </div>
-      )}
+
+      <div style={{flex:1,position:"relative",display:"flex",alignItems:"center",justifyContent:"center",overflow:"hidden"}}>
+        <video ref={videoRef} autoPlay playsInline muted style={{width:"100%",height:"100%",objectFit:"cover"}}/>
+        {scanning&&(
+          <>
+            <div style={{position:"absolute",inset:0,background:"rgba(0,0,0,0.45)",
+              WebkitMaskImage:`radial-gradient(ellipse 220px 220px at 50% 50%, transparent 100%, black 100%)`,
+              maskImage:`radial-gradient(ellipse 220px 220px at 50% 50%, transparent 100%, black 100%)`}}/>
+            <div style={{position:"absolute",width:220,height:220,border:"3px solid #4FA800",borderRadius:16}}>
+              <div style={{position:"absolute",top:-2,left:-2,width:30,height:30,border:"4px solid #4FA800",borderRight:"none",borderBottom:"none",borderRadius:"12px 0 0 0"}}/>
+              <div style={{position:"absolute",top:-2,right:-2,width:30,height:30,border:"4px solid #4FA800",borderLeft:"none",borderBottom:"none",borderRadius:"0 12px 0 0"}}/>
+              <div style={{position:"absolute",bottom:-2,left:-2,width:30,height:30,border:"4px solid #4FA800",borderRight:"none",borderTop:"none",borderRadius:"0 0 0 12px"}}/>
+              <div style={{position:"absolute",bottom:-2,right:-2,width:30,height:30,border:"4px solid #4FA800",borderLeft:"none",borderTop:"none",borderRadius:"0 0 12px 0"}}/>
+            </div>
+            <div style={{position:"absolute",bottom:30,color:"rgba(255,255,255,0.8)",fontSize:13,textAlign:"center"}}>
+              Centra el código QR en el recuadro
+            </div>
+          </>
+        )}
+        {!loaded&&!error&&(
+          <div style={{position:"absolute",color:"#fff",fontSize:13}}>Cargando escáner...</div>
+        )}
+      </div>
+
       <div style={{background:C.s1,padding:18,flexShrink:0}}>
-        {error&&<div style={{color:C.red,fontSize:12,marginBottom:12,padding:"8px 10px",background:C.redL,borderRadius:8}}>{error}</div>}
+        {error&&<div style={{color:C.red,fontSize:12,marginBottom:12,padding:"8px 10px",background:C.redL,borderRadius:8,lineHeight:1.5}}>{error}</div>}
         <div style={{color:C.t2,fontSize:12,fontWeight:600,marginBottom:8}}>O introduce el código manualmente</div>
         <div style={{display:"flex",gap:8}}>
           <input value={manual} onChange={e=>setManual(e.target.value)}
             onKeyDown={e=>e.key==="Enter"&&tryManual()}
-            placeholder="ID artículo o código ubicación..." style={{...IS,flex:1}}/>
+            placeholder="ID artículo (ej: h01) o ubicación (ej: A1-A1-N2)"
+            style={{...IS,flex:1}}/>
           <button onClick={tryManual} style={{padding:"10px 14px",borderRadius:8,border:"none",
-            background:C.navy,color:"#fff",fontFamily:"inherit",fontSize:13,fontWeight:600,cursor:"pointer",whiteSpace:"nowrap"}}>
-            Buscar
-          </button>
+            background:C.navy,color:"#fff",fontFamily:"inherit",fontSize:13,fontWeight:600,
+            cursor:"pointer",whiteSpace:"nowrap"}}>Buscar</button>
         </div>
       </div>
     </div>
