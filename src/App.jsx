@@ -408,44 +408,60 @@ function QRScanner({items,onClose,onItem}) {
   const tryManual=()=>{ if(manual.trim()) handleCode(manual.trim()); };
 
   return (
-    <div style={{position:"absolute",inset:0,background:"#000",zIndex:400,display:"flex",flexDirection:"column"}}>
+    <div style={{position:"fixed",inset:0,background:"#000",zIndex:400,display:"flex",flexDirection:"column"}}>
       <canvas ref={canvasRef} style={{display:"none"}}/>
-      <div style={{padding:"14px 16px",display:"flex",alignItems:"center",justifyContent:"space-between",flexShrink:0}}>
+      <div style={{padding:"14px 16px",display:"flex",alignItems:"center",justifyContent:"space-between",flexShrink:0,paddingTop:"env(safe-area-inset-top,14px)"}}>
         <span style={{color:"#fff",fontSize:16,fontWeight:700}}>Escáner QR</span>
-        <button onClick={onClose} style={{background:"rgba(255,255,255,0.15)",border:"none",borderRadius:8,cursor:"pointer",padding:8,display:"flex"}}><X size={18} color="#fff"/></button>
+        <button onClick={onClose} style={{background:"rgba(255,255,255,0.15)",border:"none",borderRadius:8,cursor:"pointer",padding:10,display:"flex"}}><X size={20} color="#fff"/></button>
       </div>
 
-      <div style={{flex:1,position:"relative",display:"flex",alignItems:"center",justifyContent:"center",overflow:"hidden"}}>
-        <video ref={videoRef} autoPlay playsInline muted style={{width:"100%",height:"100%",objectFit:"cover"}}/>
+      <div style={{flex:1,position:"relative",overflow:"hidden"}}>
+        <video ref={videoRef} autoPlay playsInline muted style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover"}}/>
         {scanning&&(
           <>
-            <div style={{position:"absolute",inset:0,background:"rgba(0,0,0,0.45)",
-              WebkitMaskImage:`radial-gradient(ellipse 220px 220px at 50% 50%, transparent 100%, black 100%)`,
-              maskImage:`radial-gradient(ellipse 220px 220px at 50% 50%, transparent 100%, black 100%)`}}/>
-            <div style={{position:"absolute",width:220,height:220,border:"3px solid #4FA800",borderRadius:16}}>
-              <div style={{position:"absolute",top:-2,left:-2,width:30,height:30,border:"4px solid #4FA800",borderRight:"none",borderBottom:"none",borderRadius:"12px 0 0 0"}}/>
-              <div style={{position:"absolute",top:-2,right:-2,width:30,height:30,border:"4px solid #4FA800",borderLeft:"none",borderBottom:"none",borderRadius:"0 12px 0 0"}}/>
-              <div style={{position:"absolute",bottom:-2,left:-2,width:30,height:30,border:"4px solid #4FA800",borderRight:"none",borderTop:"none",borderRadius:"0 0 0 12px"}}/>
-              <div style={{position:"absolute",bottom:-2,right:-2,width:30,height:30,border:"4px solid #4FA800",borderLeft:"none",borderTop:"none",borderRadius:"0 0 12px 0"}}/>
+            <div style={{position:"absolute",inset:0,background:"rgba(0,0,0,0.5)"}}/>
+            <div style={{position:"absolute",top:"50%",left:"50%",
+              transform:"translate(-50%,-50%)",
+              width:"min(65vw,260px)",height:"min(65vw,260px)",
+              background:"transparent",
+              boxShadow:"0 0 0 9999px rgba(0,0,0,0.5)",
+              borderRadius:16}}>
+              {/* Esquinas */}
+              {[["top:0,left:0","borderTop,borderLeft","16px 0 0 0"],
+                ["top:0,right:0","borderTop,borderRight","0 16px 0 0"],
+                ["bottom:0,left:0","borderBottom,borderLeft","0 0 0 16px"],
+                ["bottom:0,right:0","borderBottom,borderRight","0 0 16px 0"]
+              ].map(([pos,borders,radius],i)=>{
+                const p=Object.fromEntries(pos.split(",").map(s=>s.split(":")));
+                const b=Object.fromEntries(borders.split(",").map(s=>[s,"3px solid #4FA800"]));
+                return <div key={i} style={{position:"absolute",width:28,height:28,borderRadius:radius,...p,...b}}/>;
+              })}
             </div>
-            <div style={{position:"absolute",bottom:30,color:"rgba(255,255,255,0.8)",fontSize:13,textAlign:"center"}}>
+            <div style={{position:"absolute",bottom:20,left:0,right:0,
+              textAlign:"center",color:"rgba(255,255,255,0.85)",fontSize:13,
+              padding:"0 20px"}}>
               Centra el código QR en el recuadro
             </div>
           </>
         )}
         {!loaded&&!error&&(
-          <div style={{position:"absolute",color:"#fff",fontSize:13}}>Cargando escáner...</div>
+          <div style={{position:"absolute",inset:0,display:"flex",alignItems:"center",
+            justifyContent:"center",color:"#fff",fontSize:13}}>Cargando escáner...</div>
         )}
       </div>
 
-      <div style={{background:C.s1,padding:18,flexShrink:0}}>
-        {error&&<div style={{color:C.red,fontSize:12,marginBottom:12,padding:"8px 10px",background:C.redL,borderRadius:8,lineHeight:1.5}}>{error}</div>}
-        <div style={{color:C.t2,fontSize:12,fontWeight:600,marginBottom:8}}>O introduce el código manualmente</div>
+      <div style={{background:C.s1,padding:"16px",flexShrink:0,
+        paddingBottom:"calc(16px + env(safe-area-inset-bottom,0px))"}}>
+        {error&&<div style={{color:C.red,fontSize:12,marginBottom:12,padding:"8px 10px",
+          background:C.redL,borderRadius:8,lineHeight:1.5}}>{error}</div>}
+        <div style={{color:C.t2,fontSize:12,fontWeight:600,marginBottom:8}}>
+          O introduce el código manualmente
+        </div>
         <div style={{display:"flex",gap:8}}>
           <input value={manual} onChange={e=>setManual(e.target.value)}
             onKeyDown={e=>e.key==="Enter"&&tryManual()}
-            placeholder="ID artículo (ej: h01) o ubicación (ej: A1-A1-N2)"
-            style={{...IS,flex:1}}/>
+            placeholder="ej: h01 o A1-A1-N2"
+            style={{...IS,flex:1,fontSize:16}}/>
           <button onClick={tryManual} style={{padding:"10px 14px",borderRadius:8,border:"none",
             background:C.navy,color:"#fff",fontFamily:"inherit",fontSize:13,fontWeight:600,
             cursor:"pointer",whiteSpace:"nowrap"}}>Buscar</button>
@@ -1728,9 +1744,16 @@ export default function AldagoApp() {
   const anyModal=search||adding||scanning||(editItem!=null);
 
   return (
-    <div style={{fontFamily:"'Segoe UI','Outfit',-apple-system,sans-serif",background:C.bg,color:C.t1,maxWidth:430,margin:"0 auto",display:"flex",flexDirection:"column",height:"100vh",overflow:"hidden",position:"relative"}}>
+    <div style={{fontFamily:"'Segoe UI','Outfit',-apple-system,sans-serif",
+      background:C.bg,color:C.t1,
+      width:"100%",maxWidth:480,margin:"0 auto",
+      display:"flex",flexDirection:"column",
+      height:"100dvh",
+      position:"relative",overflow:"hidden",
+      WebkitOverflowScrolling:"touch"}}>
       <AppHeader view={view} onSearch={()=>setSearch(true)} onScan={()=>setScanning(true)} selectedItem={selItem} onBack={()=>setSelItem(null)}/>
-      <div style={{flex:1,overflowY:"auto",paddingTop:10,position:"relative"}}>
+      <div style={{flex:1,overflowY:"auto",paddingTop:10,position:"relative",
+        WebkitOverflowScrolling:"touch"}}>
         {selItem
           ?<ItemDetail item={selItem} items={items} setItems={setItems} movs={movs} addMov={addMov} onEdit={()=>setEditItem(selItem)}/>
           :view==="dashboard"?<Dashboard items={items} movs={movs} onItem={openItem} goTo={goTo}/>
@@ -1750,7 +1773,9 @@ export default function AldagoApp() {
       <AppNav view={selItem?null:view} setView={goTo}/>
       {!anyModal&&!selItem&&(
         <button onClick={()=>setAdding(true)} style={{
-          position:"absolute",bottom:72,right:16,width:48,height:48,borderRadius:12,
+          position:"absolute",
+          bottom:"calc(72px + env(safe-area-inset-bottom, 0px))",
+          right:16,width:52,height:52,borderRadius:14,
           background:C.navy,border:"none",cursor:"pointer",zIndex:60,
           display:"flex",alignItems:"center",justifyContent:"center",
           boxShadow:"0 4px 16px rgba(28,20,117,0.35)",fontFamily:"inherit"}}>
