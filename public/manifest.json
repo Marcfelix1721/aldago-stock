@@ -4,13 +4,13 @@
   "description": "Herramienta interna de gestión de almacén para Aldago serveis i instal·lacions",
   "icons": [
     {
-      "src": "icon-192.png",
+      "src": "icon-192 (1).png",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "any maskable"
     },
     {
-      "src": "icon-512.png",
+      "src": "icon-512 (1).png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
@@ -20,6 +20,6 @@
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#1C1475",
-  "background_color": "#F5F6FA",
+  "background_color": "#1C1475",
   "lang": "es"
 }
