@@ -51,11 +51,11 @@ function mkColors(dark) {
 }
 let C = mkColors(false);
 
-function LogoAldago({height=38}) {
+function LogoAldago({height=38, symbolColor="#4FA800"}) {
   return (
     <svg viewBox="0 0 168 79" height={height} style={{display:"block"}}>
+      <path fill={symbolColor} fillRule="evenodd" shapeRendering="geometricPrecision" d="M 116.12 36.25 L 119.38 38.88 L 128.5 37.88 L 132.38 30.88 L 137.88 31.5 L 139.88 26.38 L 136.5 14 L 121 16.38 L 121 21.5 L 125.88 24.62 L 123 30.5 Z M 88 26.38 C 87.86 29.51, 88.8 34.73, 90 36.5 C 91.2 38.27, 95.08 37.61, 96.5 38.88 C 97.92 40.16, 98.87 44.37, 100 45.5 C 101.13 46.63, 102.98 48.05, 104.5 46.88 C 106.02 45.71, 111.07 39.09, 110.75 37.25 C 110.43 35.41, 104.06 35.24, 102.25 33.88 C 100.44 32.52, 98.48 30.1, 98 27.62 C 97.52 25.14, 97.57 19.02, 98.88 16.38 C 100.19 13.74, 104.19 10.35, 107.25 9 C 110.31 7.65, 118.76 7.45, 120.5 6.88 C 122.24 6.31, 121.5 5.41, 119.5 5 C 117.5 4.59, 109.94 3.29, 106.38 4 C 102.82 4.71, 96.56 8.53, 94.38 10 C 92.2 11.47, 91.9 12.06, 91 14.38 C 90.1 16.7, 88.14 23.25, 88 26.38 Z"/>
       <path fill="#FFFFFF" fillRule="nonzero" d="M 19.04 33.22 Q 23.98 33.22 26.73 35.75 Q 29.49 38.27 29.49 43.27 L 29.49 61.77 L 23.73 61.77 L 22.25 58.05 L 22.05 58.05 Q 20.41 60.24 18.57 61.26 Q 16.74 62.28 13.64 62.28 Q 9.97 62.28 7.87 59.88 Q 5.78 57.48 5.78 53.36 Q 5.78 48.87 8.64 46.71 Q 11.49 44.54 17.05 44.29 L 21.33 44.13 L 21.33 43.27 Q 21.33 39.34 17.81 39.34 Q 16.19 39.34 14.40 39.87 Q 12.62 40.41 10.67 41.38 L 8.28 35.72 Q 10.47 34.54 13.20 33.88 Q 15.93 33.22 19.04 33.22 Z M 19.08 49.13 Q 16.34 49.23 15.19 50.25 Q 14.04 51.27 14.04 53.05 Q 14.04 54.73 14.83 55.47 Q 15.62 56.21 16.95 56.21 Q 18.78 56.21 20.08 54.91 Q 21.38 53.61 21.38 51.37 L 21.38 49.02 L 19.08 49.13 Z M 44.17 61.77 L 36.01 61.77 L 36.01 23.03 L 44.17 23.03 L 44.17 61.77 Z M 59.15 62.28 Q 54.82 62.28 52.19 58.53 Q 49.57 54.78 49.57 47.75 Q 49.57 40.72 52.22 37.00 Q 54.87 33.27 59.21 33.27 Q 61.75 33.27 63.48 34.37 Q 65.22 35.47 66.34 37.35 L 66.60 37.35 Q 66.44 36.13 66.31 34.60 Q 66.18 33.07 66.18 31.69 L 66.18 23.03 L 74.34 23.03 L 74.34 61.77 L 68.02 61.77 L 66.54 58.41 L 66.18 58.41 Q 65.01 60.19 63.38 61.23 Q 61.75 62.28 59.15 62.28 Z M 62.06 55.70 Q 64.45 55.70 65.50 53.97 Q 66.54 52.23 66.60 48.62 L 66.60 47.49 Q 66.60 43.78 65.58 41.89 Q 64.56 40.00 62.01 40.00 Q 60.02 40.00 58.92 41.97 Q 57.83 43.93 57.83 47.80 Q 57.83 51.83 58.94 53.76 Q 60.07 55.70 62.06 55.70 Z M 92.69 33.22 Q 97.64 33.22 100.38 35.75 Q 103.14 38.27 103.14 43.27 L 103.14 61.77 L 97.38 61.77 L 95.90 58.05 L 95.70 58.05 Q 94.07 60.24 92.23 61.26 Q 90.40 62.28 87.29 62.28 Q 83.62 62.28 81.52 59.88 Q 79.44 57.48 79.44 53.36 Q 79.44 48.87 82.29 46.71 Q 85.15 44.54 90.70 44.29 L 94.98 44.13 L 94.98 43.27 Q 94.98 39.34 91.46 39.34 Q 89.84 39.34 88.06 39.87 Q 86.27 40.41 84.33 41.38 L 81.94 35.72 Q 84.13 34.54 86.85 33.88 Q 89.58 33.22 92.69 33.22 Z M 92.74 49.13 Q 89.99 49.23 88.84 50.25 Q 87.70 51.27 87.70 53.05 Q 87.70 54.73 88.49 55.47 Q 89.27 56.21 90.60 56.21 Q 92.44 56.21 93.73 54.91 Q 95.03 53.61 95.03 51.37 L 95.03 49.02 L 92.74 49.13 Z M 118.07 33.27 Q 120.58 33.27 122.28 34.27 Q 123.98 35.26 125.26 37.30 L 125.51 37.30 L 126.18 33.78 L 133.16 33.78 L 133.16 61.11 Q 133.16 67.37 129.80 70.69 Q 126.44 74.00 119.45 74.00 Q 116.59 74.00 114.28 73.59 Q 111.96 73.19 109.77 72.22 L 109.77 65.44 Q 112.21 66.51 114.48 67.04 Q 116.75 67.58 119.35 67.58 Q 122.10 67.58 123.55 66.31 Q 125.00 65.03 125.00 62.28 L 125.00 61.81 Q 125.00 60.09 125.26 58.15 L 125.00 58.15 Q 123.83 60.19 122.10 61.23 Q 120.37 62.28 117.92 62.28 Q 113.49 62.28 110.94 58.51 Q 108.39 54.73 108.39 47.85 Q 108.39 40.92 111.01 37.09 Q 113.64 33.27 118.07 33.27 Z M 120.83 39.90 Q 116.70 39.90 116.70 48.00 Q 116.70 51.93 117.74 53.82 Q 118.79 55.70 120.93 55.70 Q 123.28 55.70 124.34 54.07 Q 125.42 52.44 125.42 48.82 L 125.42 47.65 Q 125.42 43.62 124.37 41.76 Q 123.32 39.90 120.83 39.90 Z M 164.00 47.70 Q 164.00 52.03 162.57 55.32 Q 161.15 58.60 158.29 60.44 Q 155.44 62.28 151.21 62.28 Q 147.28 62.28 144.45 60.44 Q 141.62 58.60 140.07 55.35 Q 138.51 52.08 138.51 47.70 Q 138.51 41.02 141.80 37.15 Q 145.09 33.27 151.36 33.27 Q 155.08 33.27 157.93 34.93 Q 160.79 36.58 162.39 39.83 Q 164.00 43.06 164.00 47.70 Z M 146.82 47.75 Q 146.82 51.72 147.86 53.76 Q 148.92 55.80 151.30 55.80 Q 153.70 55.80 154.72 53.76 Q 155.74 51.72 155.74 47.70 Q 155.74 43.72 154.70 41.74 Q 153.65 39.75 151.26 39.75 Q 148.92 39.75 147.86 41.74 Q 146.82 43.72 146.82 47.75 Z"/>
-      <path fill="#4FA800" fillRule="evenodd" shapeRendering="geometricPrecision" d="M 116.12 36.25 L 119.38 38.88 L 128.5 37.88 L 132.38 30.88 L 137.88 31.5 L 139.88 26.38 L 136.5 14 L 121 16.38 L 121 21.5 L 125.88 24.62 L 123 30.5 Z M 88 26.38 C 87.86 29.51, 88.8 34.73, 90 36.5 C 91.2 38.27, 95.08 37.61, 96.5 38.88 C 97.92 40.16, 98.87 44.37, 100 45.5 C 101.13 46.63, 102.98 48.05, 104.5 46.88 C 106.02 45.71, 111.07 39.09, 110.75 37.25 C 110.43 35.41, 104.06 35.24, 102.25 33.88 C 100.44 32.52, 98.48 30.1, 98 27.62 C 97.52 25.14, 97.57 19.02, 98.88 16.38 C 100.19 13.74, 104.19 10.35, 107.25 9 C 110.31 7.65, 118.76 7.45, 120.5 6.88 C 122.24 6.31, 121.5 5.41, 119.5 5 C 117.5 4.59, 109.94 3.29, 106.38 4 C 102.82 4.71, 96.56 8.53, 94.38 10 C 92.2 11.47, 91.9 12.06, 91 14.38 C 90.1 16.7, 88.14 23.25, 88 26.38 Z"/>
     </svg>
   );
 }
@@ -547,7 +547,7 @@ function Inventario({items,onItem,setItems}) {
       {open&&(<div style={{background:C.s1,border:`1px solid ${C.navyBorder}`,borderRadius:12,padding:"14px",marginBottom:10,boxShadow:C.shadowMd}}>
         <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:10}}><span style={{color:C.navy,fontSize:13,fontWeight:700}}>Filtrar</span>{activeCount>0&&<button onClick={clearAll} style={{background:"none",border:"none",cursor:"pointer",color:C.red,fontSize:11,fontWeight:600,fontFamily:"inherit",padding:0}}><X size={10}/>Limpiar</button>}</div>
         <div style={{display:"flex",gap:6,marginBottom:14}}>{[["todos","Todos"],["herramienta","🔧 Herramientas"],["consumible","📦 Consumibles"]].map(([v,l])=>(<button key={v} onClick={()=>setTipo(v)} style={{flex:1,padding:"7px 4px",borderRadius:8,border:`1.5px solid ${tipo===v?C.navy:C.border}`,fontFamily:"inherit",background:tipo===v?C.navy:C.s2,color:tipo===v?"#fff":C.t2,fontSize:11,fontWeight:600,cursor:"pointer"}}>{l}</button>))}</div>
-        <div style={{display:"flex",flexWrap:"wrap",gap:6,marginBottom:14}}>{allCats.map(c=>{const sel=selCats.includes(c);const cnt=items.filter(i=>i.cat===c&&(tipo==="todos"||i.tipo===tipo)).length;return<button key={c} onClick={()=>toggleCat(c)} style={{display:"inline-flex",alignItems:"center",gap:5,padding:"6px 12px",borderRadius:20,fontFamily:"inherit",cursor:"pointer",border:`1.5px solid ${sel?C.navy:C.border}`,background:sel?C.navy:C.s2,color:sel?"#fff":C.t2,fontSize:11,fontWeight:600}}>{c}<span style={{opacity:0.55}}>({cnt})</span></button>;})}</div>
+        <div style={{display:"flex",flexWrap:"wrap",gap:6,marginBottom:14}}>{allCats.map(c=>{const sel=selCats.includes(c);const cnt=items.filter(i=>i.cat===c&&(tipo==="todos"||i.tipo===tipo)).length;return <button key={c} onClick={()=>toggleCat(c)} style={{display:"inline-flex",alignItems:"center",gap:5,padding:"6px 12px",borderRadius:20,fontFamily:"inherit",cursor:"pointer",border:`1.5px solid ${sel?C.navy:C.border}`,background:sel?C.navy:C.s2,color:sel?"#fff":C.t2,fontSize:11,fontWeight:600}}>{c}<span style={{opacity:0.55}}>({cnt})</span></button>;})}</div>
         <button onClick={()=>setOpen(false)} style={{width:"100%",padding:"10px",borderRadius:10,border:"none",fontFamily:"inherit",background:C.navy,color:"#fff",fontSize:13,fontWeight:700,cursor:"pointer"}}>Ver {sorted.length} resultado{sorted.length!==1?"s":""}</button>
       </div>)}
       {multiMode&&selected.size>0&&(<div style={{background:C.navy,borderRadius:10,padding:"10px 14px",marginBottom:10,display:"flex",alignItems:"center",gap:10,boxShadow:C.shadowMd}}><span style={{color:"#fff",fontSize:12,fontWeight:600,flex:1}}>{selected.size} seleccionado{selected.size>1?"s":""}</span><select onChange={e=>e.target.value&&applyBulk(e.target.value)} defaultValue="" style={{background:"rgba(255,255,255,0.15)",border:"1px solid rgba(255,255,255,0.2)",color:"#fff",padding:"6px 10px",borderRadius:6,fontSize:12,fontFamily:"inherit",cursor:"pointer"}}><option value="" style={{color:"#000"}}>Cambiar estado...</option>{Object.entries(STATUS).map(([k,v])=><option key={k} value={k} style={{color:"#000"}}>{v.label}</option>)}<option value="delete" style={{color:"#C0392B"}}>🗑 Eliminar</option></select><button onClick={()=>{setSelected(new Set());setMultiMode(false);}} style={{background:"none",border:"none",cursor:"pointer",padding:4}}><X size={16} color="rgba(255,255,255,0.7)"/></button></div>)}
@@ -585,7 +585,7 @@ function Herramientas({items,onItem}) {
 function Pendientes({items,onItem}) {
   const pend=items.filter(i=>["tirar","revisar","reubicar","venta","reparacion","roto"].includes(i.estado));
   const groups=[{e:"roto",label:"Roto",Icon:AlertTriangle},{e:"reparacion",label:"En reparación",Icon:RefreshCw},{e:"revisar",label:"Revisar",Icon:Info},{e:"reubicar",label:"Reubicar",Icon:MapPin},{e:"venta",label:"Posible venta",Icon:Star},{e:"tirar",label:"Para tirar",Icon:Trash2}];
-  if(!pend.length)return<Empty text="Sin pendientes · Todo bajo control"/>;
+  if(!pend.length)return <Empty text="Sin pendientes · Todo bajo control"/>;
   return(<div style={{padding:"0 16px"}}><div style={{color:C.t3,fontSize:11,marginBottom:14}}>{pend.length} artículo{pend.length!==1?"s":""} pendientes</div>{groups.map(g=>{const grp=pend.filter(i=>i.estado===g.e);if(!grp.length)return null;return(<div key={g.e} style={{marginBottom:20}}><div style={{display:"flex",alignItems:"center",gap:6,marginBottom:8}}><g.Icon size={12} color={C.t2}/><span style={{color:C.t3,fontSize:11,fontWeight:600,letterSpacing:"0.7px",textTransform:"uppercase"}}>{g.label}</span></div><div style={{display:"flex",flexDirection:"column",gap:6}}>{grp.map(it=><ItemRow key={it.id} item={it} onClick={onItem}/>)}</div></div>);})}</div>);
 }
 
@@ -596,7 +596,7 @@ function RevisionGuiada({items,setItems,addMov,onItem}) {
   const [idx,setIdx]=useState(0);const [confirmed,setConfirmed]=useState([]);const [notas,setNotas]=useState({});
   const loc=locs[idx];const pct=Math.round((confirmed.length/Math.max(locs.length,1))*100);
   const confirm=()=>{if(notas[loc.code])loc.items.forEach(it=>addMov({itemId:it.id,tipo:"edicion",quien:"Revisión",nota:`Revisión: ${notas[loc.code]}`,fecha:"Ahora"}));setConfirmed(p=>[...p,loc.code]);if(idx<locs.length-1)setIdx(i=>i+1);};
-  if(!locs.length)return<Empty text="Sin artículos con ubicación"/>;
+  if(!locs.length)return <Empty text="Sin artículos con ubicación"/>;
   if(confirmed.length===locs.length)return(<div style={{padding:"32px 16px",textAlign:"center"}}><div style={{fontSize:52,marginBottom:16}}>✅</div><div style={{color:C.green,fontSize:18,fontWeight:700,marginBottom:8}}>Revisión completada</div><div style={{color:C.t2,fontSize:13}}>{locs.length} ubicaciones revisadas</div></div>);
   return(
     <div style={{padding:"0 16px"}}>
@@ -644,7 +644,7 @@ function AddModal({onClose,onAdd}) {
         <FG label="Tipo"><div style={{display:"flex",gap:8}}>{[["herramienta","🔧 Herramienta"],["consumible","📦 Consumible"]].map(([v,l])=>(<button key={v} onClick={()=>set("tipo",v)} style={{flex:1,padding:10,borderRadius:8,fontFamily:"inherit",border:`1px solid ${f.tipo===v?C.navy:C.border}`,background:f.tipo===v?C.navyL:C.s2,color:f.tipo===v?C.navy:C.t2,fontSize:13,fontWeight:600,cursor:"pointer"}}>{l}</button>))}</div></FG>
         <FG label="Nombre *"><input value={f.nombre} onChange={e=>set("nombre",e.target.value)} placeholder="Nombre del artículo" style={IS}/></FG>
         <FG label="Categoría"><input value={f.cat} onChange={e=>set("cat",e.target.value)} placeholder="Ej: Fijación, Taladros..." style={IS}/></FG>
-        <FG label="Ubicación"><select value={f.ubicacion} onChange={e=>set("ubicacion",e.target.value)} style={{...IS,cursor:"pointer"}}><option value="">— Sin ubicación —</option>{[1,2].map(a=>Object.entries(LOCS[a]||{}).map(([z,mods])=>Object.entries(mods).map(([m,lvls])=>lvls.map(lvl=>{const code=`A${a}-${z}${m}-N${lvl}`;return<option key={code} value={code}>{code}</option>;}))))}</select></FG>
+        <FG label="Ubicación"><select value={f.ubicacion} onChange={e=>set("ubicacion",e.target.value)} style={{...IS,cursor:"pointer"}}><option value="">— Sin ubicación —</option>{[1,2].map(a=>Object.entries(LOCS[a]||{}).map(([z,mods])=>Object.entries(mods).map(([m,lvls])=>lvls.map(lvl=>{const code=`A${a}-${z}${m}-N${lvl}`;return <option key={code} value={code}>{code}</option>;}))))}</select></FG>
         <FG label="Estado"><div style={{display:"flex",flexWrap:"wrap",gap:6}}>{Object.entries(STATUS).slice(0,6).map(([k,cfg])=>(<button key={k} onClick={()=>set("estado",k)} style={{padding:"6px 12px",borderRadius:6,fontFamily:"inherit",border:`1px solid ${f.estado===k?cfg.c:C.border}`,background:f.estado===k?cfg.bg:C.s1,color:f.estado===k?cfg.c:C.t2,fontSize:12,fontWeight:600,cursor:"pointer"}}>{cfg.label}</button>))}</div></FG>
         {f.tipo==="consumible"&&(<><div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}><FG label="Stock actual"><input value={f.stock} onChange={e=>set("stock",e.target.value)} type="number" placeholder="0" style={IS}/></FG><FG label="Stock mínimo"><input value={f.stockMin} onChange={e=>set("stockMin",e.target.value)} type="number" placeholder="0" style={IS}/></FG></div><FG label="Precio unitario (€)"><input value={f.precio} onChange={e=>set("precio",e.target.value)} type="number" step="0.01" placeholder="0.00" style={IS}/></FG></>)}
         <FG label="Proveedor"><input value={f.proveedor} onChange={e=>set("proveedor",e.target.value)} placeholder="Ej: Bricomart..." style={IS}/></FG>
@@ -838,7 +838,7 @@ function VistaTrabajador({items,sols,setSols,onSalir}) {
   return(
     <div style={{position:"fixed",inset:0,background:"#ECEEF5",display:"flex",flexDirection:"column",fontFamily:"'DM Sans',sans-serif"}}>
       <div style={{background:GV,padding:"0 16px",height:58,display:"flex",alignItems:"center",gap:12,flexShrink:0,boxShadow:"0 2px 12px rgba(79,168,0,0.25)"}}>
-        <div style={{flex:1,display:"flex",alignItems:"center",gap:10}}><LogoAldago height={34}/><div style={{width:1,height:18,background:"rgba(255,255,255,0.25)"}}/><div style={{color:"rgba(255,255,255,0.8)",fontSize:12,fontWeight:600}}>Solicitar material</div></div>
+        <div style={{flex:1,display:"flex",alignItems:"center",gap:10}}><LogoAldago height={34} symbolColor="rgba(255,255,255,0.85)"/><div style={{width:1,height:18,background:"rgba(255,255,255,0.25)"}}/><div style={{color:"rgba(255,255,255,0.8)",fontSize:12,fontWeight:600}}>Solicitar material</div></div>
         <button onClick={()=>{setNombreFiltro("");setVerMisSols(true);}} style={{background:"rgba(255,255,255,0.2)",border:"none",borderRadius:8,cursor:"pointer",padding:"7px 12px",color:"#fff",fontSize:12,fontWeight:600,fontFamily:"inherit",display:"flex",alignItems:"center",gap:5}}><Inbox size={14} color="#fff"/>Mis solicitudes</button>
         <button onClick={onSalir} style={{background:"rgba(255,255,255,0.15)",border:"none",borderRadius:8,cursor:"pointer",padding:8,display:"flex"}}><LogOut size={16} color="rgba(255,255,255,0.8)"/></button>
       </div>
@@ -965,6 +965,429 @@ function BandejaSolicitudes({sols,setSols,items,setItems,addMov}) {
   );
 }
 
+
+// ═══════════════════════════════════════════════════════════
+// ─── NUEVO: PANEL DIRECCIÓN ───────────────────────────────
+// ═══════════════════════════════════════════════════════════
+function PanelDireccion({items,movs,sols,onSalir}) {
+  const [winW,setWinW]=useState(typeof window!=="undefined"?window.innerWidth:1200);
+  useEffect(()=>{const h=()=>setWinW(window.innerWidth);window.addEventListener("resize",h);return()=>window.removeEventListener("resize",h);},[]);
+  const isMobile=winW<768;
+
+  // ── DATOS ──────────────────────────────────────────────
+  const herrs=items.filter(i=>i.tipo==="herramienta");
+  const cons=items.filter(i=>i.tipo==="consumible");
+  const hDisp=herrs.filter(i=>i.estado==="disponible").length;
+  const hFuera=herrs.filter(i=>["en_uso","prestado"].includes(i.estado)).length;
+  const hProb=herrs.filter(i=>["roto","reparacion","perdido","revisar"].includes(i.estado)).length;
+  const cOk=cons.filter(i=>i.stock>i.stockMin).length;
+  const cBajo=cons.filter(i=>i.stock<=i.stockMin&&i.stock>0).length;
+  const cAgotado=cons.filter(i=>i.stock===0).length;
+  const valorStock=cons.reduce((s,i)=>s+((i.precio||0)*(i.stock||0)),0);
+  const ferrFuera=herrs.filter(i=>["en_uso","prestado"].includes(i.estado));
+  const sPend=sols.filter(s=>s.estado==="pendiente").length;
+  const sAcep=sols.filter(s=>s.estado==="aceptada").length;
+  const sEntr=sols.filter(s=>s.estado==="entregada").length;
+  const sRech=sols.filter(s=>s.estado==="rechazada").length;
+  const alertStock=cons.filter(i=>i.stock!==null&&i.stock<=i.stockMin);
+  const alertAten=items.filter(i=>["roto","reparacion","perdido"].includes(i.estado));
+  const alertRev=items.filter(i=>i.proximaRevision);
+  const totalAlerts=alertStock.length+alertAten.length+alertRev.length;
+
+  // Top categorías
+  const catMap={};
+  items.forEach(i=>{if(i.cat)catMap[i.cat]=(catMap[i.cat]||0)+1;});
+  const topCats=Object.entries(catMap).sort((a,b)=>b[1]-a[1]).slice(0,6);
+
+  // Actividad por tipo (últimos movs)
+  const movsRev=[...movs].reverse().slice(0,20);
+  const actCounts={salida:0,entrada:0,uso:0,agotado:0,edicion:0};
+  movsRev.forEach(m=>{if(actCounts[m.tipo]!==undefined)actCounts[m.tipo]++;});
+  const actMax=Math.max(...Object.values(actCounts),1);
+
+  // Salud global (0-100)
+  const saludScore=Math.round(
+    (hDisp/Math.max(herrs.length,1))*40+
+    (cOk/Math.max(cons.length,1))*35+
+    (alertAten.length===0?15:Math.max(0,15-alertAten.length*5))+
+    (totalAlerts===0?10:Math.max(0,10-totalAlerts*2))
+  );
+  const saludColor=saludScore>=80?"#4FA800":saludScore>=50?"#B45309":"#C0392B";
+  const saludLabel=saludScore>=80?"Excelente":saludScore>=60?"Buena":saludScore>=40?"Regular":"Crítica";
+
+  // ── PALETA ─────────────────────────────────────────────
+  const N="#1C1475",G="#4FA800",R="#C0392B",A="#B45309";
+  const BG="#EEF0F8",CARD="#FFFFFF",BD="#E2E6F5";
+  const T1="#0D1117",T2="#374151",T3="#6B7280",T4="#9CA3AF";
+  const SH="0 1px 3px rgba(0,0,0,0.05),0 4px 20px rgba(28,20,117,0.07)";
+
+  const fmtEuros=v=>`€${Math.round(v).toLocaleString("es-ES")}`;
+  const today=new Date().toLocaleDateString("es-ES",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+
+  // ── SUBCOMPONENTES INLINE ──────────────────────────────
+
+  // Barra segmentada horizontal
+  const SegBar=({segs})=>{
+    const total=segs.reduce((s,d)=>s+d.v,0)||1;
+    return(
+      <div style={{display:"flex",height:8,borderRadius:6,overflow:"hidden",gap:1.5}}>
+        {segs.map((s,i)=>s.v>0&&<div key={i} style={{width:`${s.v/total*100}%`,background:s.c,minWidth:4,transition:"width 0.4s ease"}}/>)}
+      </div>
+    );
+  };
+
+  // Dona SVG
+  const Donut=({segs,size=80,label,sublabel})=>{
+    const total=segs.reduce((s,d)=>s+d.v,0)||1;
+    const r=30,cx=size/2,cy=size/2,circ=2*Math.PI*r;
+    let cum=0;
+    return(
+      <div style={{position:"relative",width:size,height:size,flexShrink:0}}>
+        <svg width={size} height={size}>
+          <g style={{transform:`rotate(-90deg)`,transformOrigin:`${cx}px ${cy}px`}}>
+            {segs.filter(s=>s.v>0).map((seg,i)=>{
+              const pct=seg.v/total,dash=pct*circ,off=-(cum*circ);
+              cum+=pct;
+              return <circle key={i} cx={cx} cy={cy} r={r} fill="none" stroke={seg.c} strokeWidth={11} strokeDasharray={`${dash} ${circ-dash}`} strokeDashoffset={off}/>;
+            })}
+          </g>
+          <circle cx={cx} cy={cy} r={22} fill={CARD}/>
+        </svg>
+        {label&&<div style={{position:"absolute",inset:0,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",pointerEvents:"none"}}>
+          <div style={{color:T1,fontSize:14,fontWeight:800,lineHeight:1}}>{label}</div>
+          {sublabel&&<div style={{color:T4,fontSize:9,marginTop:2}}>{sublabel}</div>}
+        </div>}
+      </div>
+    );
+  };
+
+  // KPI card
+  const KPI=({Icon,color,label,value,sub,badge,trend})=>(
+    <div style={{background:CARD,border:`1px solid ${BD}`,borderLeft:`3px solid ${color}`,borderRadius:12,padding:"16px 18px",boxShadow:SH,display:"flex",flexDirection:"column",gap:0}}>
+      <div style={{display:"flex",alignItems:"flex-start",justifyContent:"space-between",marginBottom:10}}>
+        <div style={{width:36,height:36,borderRadius:9,background:color+"14",display:"flex",alignItems:"center",justifyContent:"center"}}>
+          <Icon size={17} color={color}/>
+        </div>
+        <div style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:3}}>
+          {badge!=null&&badge>0&&<span style={{background:R,color:"#fff",fontSize:9,fontWeight:700,padding:"2px 7px",borderRadius:8}}>{badge} pendiente{badge>1?"s":""}</span>}
+          {trend!=null&&<span style={{color:trend>=0?G:R,fontSize:10,fontWeight:700}}>{trend>=0?"↑":"↓"} {Math.abs(trend)}%</span>}
+        </div>
+      </div>
+      <div style={{color:T1,fontSize:26,fontWeight:800,lineHeight:1,letterSpacing:"-0.8px",marginBottom:5}}>{value}</div>
+      <div style={{color:T2,fontSize:11,fontWeight:600,marginBottom:sub?3:0}}>{label}</div>
+      {sub&&<div style={{color:T4,fontSize:10,lineHeight:1.5}}>{sub}</div>}
+    </div>
+  );
+
+  // Mini stat row
+  const StatRow=({label,v,c,bg})=>(
+    <div style={{display:"flex",alignItems:"center",gap:8,padding:"6px 10px",borderRadius:7,background:bg}}>
+      <div style={{width:6,height:6,borderRadius:"50%",background:c,flexShrink:0}}/>
+      <span style={{color:T2,fontSize:11,flex:1}}>{label}</span>
+      <span style={{color:c,fontWeight:700,fontSize:12}}>{v}</span>
+    </div>
+  );
+
+  // ── RENDER ─────────────────────────────────────────────
+  return(
+    <div style={{position:"fixed",inset:0,background:BG,display:"flex",flexDirection:"column",fontFamily:"'DM Sans',-apple-system,sans-serif",overflow:"hidden"}}>
+
+      {/* ── HEADER ── */}
+      <div style={{background:N,padding:`0 ${isMobile?16:28}px`,height:62,display:"flex",alignItems:"center",gap:16,flexShrink:0,boxShadow:"0 2px 24px rgba(0,0,0,0.3)"}}>
+        <LogoAldago height={34}/>
+        <div style={{width:1,height:20,background:"rgba(255,255,255,0.18)"}}/>
+        <div>
+          <div style={{color:"rgba(255,255,255,0.4)",fontSize:8,letterSpacing:"2px",fontWeight:700,textTransform:"uppercase"}}>PANEL</div>
+          <div style={{color:"#fff",fontSize:13,fontWeight:700,letterSpacing:"-0.2px"}}>Dirección</div>
+        </div>
+        <div style={{flex:1}}/>
+        {!isMobile&&<div style={{color:"rgba(255,255,255,0.35)",fontSize:11,textTransform:"capitalize"}}>{today}</div>}
+        {totalAlerts>0&&<div style={{background:R,color:"#fff",fontSize:11,fontWeight:700,padding:"5px 11px",borderRadius:8,display:"flex",alignItems:"center",gap:5,flexShrink:0}}>
+          <AlertTriangle size={11}/>{totalAlerts} alerta{totalAlerts>1?"s":""}
+        </div>}
+        <button onClick={onSalir} style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",borderRadius:8,cursor:"pointer",padding:"7px 14px",color:"rgba(255,255,255,0.8)",fontSize:12,fontWeight:600,fontFamily:"inherit",display:"flex",alignItems:"center",gap:6,flexShrink:0}}>
+          <LogOut size={13}/>Salir
+        </button>
+      </div>
+
+      {/* ── CONTENT ── */}
+      <div style={{flex:1,overflowY:"auto",padding:isMobile?"14px 14px 32px":`20px ${isMobile?14:28}px 40px`}}>
+        <div style={{maxWidth:1160,margin:"0 auto"}}>
+
+          {/* ── SALUD GLOBAL BANNER ── */}
+          <div style={{background:saludColor,borderRadius:12,padding:"14px 20px",marginBottom:16,display:"flex",alignItems:"center",gap:16,boxShadow:`0 4px 20px ${saludColor}40`}}>
+            <div style={{width:52,height:52,borderRadius:14,background:"rgba(255,255,255,0.2)",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
+              <span style={{color:"#fff",fontSize:22,fontWeight:900}}>{saludScore}</span>
+            </div>
+            <div style={{flex:1}}>
+              <div style={{color:"#fff",fontSize:16,fontWeight:800,marginBottom:2}}>Salud del almacén: {saludLabel}</div>
+              <div style={{color:"rgba(255,255,255,0.7)",fontSize:12}}>{saludScore>=80?"Todo funciona con normalidad. Sin incidencias críticas.":saludScore>=60?"Hay algunas incidencias que requieren atención próximamente.":"Hay problemas que requieren atención inmediata."}</div>
+            </div>
+            {!isMobile&&<div style={{textAlign:"right",flexShrink:0}}>
+              <div style={{color:"rgba(255,255,255,0.5)",fontSize:10,fontWeight:600,textTransform:"uppercase",letterSpacing:"0.5px"}}>Índice</div>
+              <div style={{color:"#fff",fontSize:28,fontWeight:900,lineHeight:1}}>{saludScore}<span style={{fontSize:14,fontWeight:500}}>/100</span></div>
+            </div>}
+          </div>
+
+          {/* ── KPI ROW ── */}
+          <div style={{display:"grid",gridTemplateColumns:isMobile?"1fr 1fr":"repeat(4,1fr)",gap:10,marginBottom:14}}>
+            <KPI Icon={Package} color={N} label="Total inventario" value={items.length}
+              sub={`${herrs.length} herramientas · ${cons.length} consumibles`}/>
+            <KPI Icon={TrendingUp} color={G} label="Valor en stock" value={fmtEuros(valorStock)}
+              sub="consumibles · precio actual"/>
+            <KPI Icon={Wrench} color={hFuera>0?A:G} label="Herramientas campo" value={`${hFuera}/${herrs.length}`}
+              sub={`${hDisp} disp. · ${hProb>0?`${hProb} con prob.`:"sin incidencias"}`}/>
+            <KPI Icon={Inbox} color={sPend>0?R:N} label="Solicitudes activas" value={sPend+sAcep}
+              sub={`${sEntr} entregadas · ${sRech} rechazadas`} badge={sPend}/>
+          </div>
+
+          {/* ── FILA CENTRAL ── */}
+          <div style={{display:"grid",gridTemplateColumns:isMobile?"1fr":`1.35fr 1fr`,gap:12,marginBottom:12}}>
+
+            {/* SALUD INVENTARIO */}
+            <div style={{background:CARD,border:`1px solid ${BD}`,borderRadius:14,padding:"20px 22px",boxShadow:SH}}>
+              <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:20}}>
+                <div style={{color:T1,fontSize:14,fontWeight:700}}>Salud del inventario</div>
+                <span style={{color:T4,fontSize:11}}>{items.length} artículos totales</span>
+              </div>
+
+              {/* Herramientas */}
+              <div style={{marginBottom:20}}>
+                <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:9}}>
+                  <Wrench size={13} color={N}/><span style={{color:T2,fontSize:12,fontWeight:600}}>Herramientas</span><span style={{color:T4,fontSize:11}}>({herrs.length})</span>
+                  <div style={{flex:1}}/>
+                  <Donut segs={[{v:hDisp,c:G},{v:hFuera,c:N},{v:hProb,c:R}]} size={44} label={herrs.length} sublabel="total"/>
+                </div>
+                <SegBar segs={[{v:hDisp,c:G},{v:hFuera,c:N},{v:hProb,c:R}]}/>
+                <div style={{display:"flex",gap:12,marginTop:8}}>
+                  {[{l:"Disponibles",v:hDisp,c:G},{l:"En campo",v:hFuera,c:N},{l:"Problemas",v:hProb,c:R}].map(s=>(
+                    <div key={s.l} style={{display:"flex",alignItems:"center",gap:4}}>
+                      <div style={{width:7,height:7,borderRadius:2,background:s.c}}/><span style={{color:T3,fontSize:10}}>{s.l} <strong style={{color:T2}}>{s.v}</strong></span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Consumibles */}
+              <div style={{marginBottom:20}}>
+                <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:9}}>
+                  <Package size={13} color={G}/><span style={{color:T2,fontSize:12,fontWeight:600}}>Consumibles</span><span style={{color:T4,fontSize:11}}>({cons.length})</span>
+                  <div style={{flex:1}}/>
+                  <Donut segs={[{v:cOk,c:G},{v:cBajo,c:A},{v:cAgotado,c:R}]} size={44} label={cons.length} sublabel="total"/>
+                </div>
+                <SegBar segs={[{v:cOk,c:G},{v:cBajo,c:A},{v:cAgotado,c:R}]}/>
+                <div style={{display:"flex",gap:12,marginTop:8}}>
+                  {[{l:"Stock OK",v:cOk,c:G},{l:"Stock bajo",v:cBajo,c:A},{l:"Agotado",v:cAgotado,c:R}].map(s=>(
+                    <div key={s.l} style={{display:"flex",alignItems:"center",gap:4}}>
+                      <div style={{width:7,height:7,borderRadius:2,background:s.c}}/><span style={{color:T3,fontSize:10}}>{s.l} <strong style={{color:T2}}>{s.v}</strong></span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Actividad por tipo */}
+              <div style={{borderTop:`1px solid ${BD}`,paddingTop:16,marginBottom:16}}>
+                <div style={{color:T3,fontSize:10,fontWeight:700,textTransform:"uppercase",letterSpacing:"0.9px",marginBottom:12}}>Actividad registrada (últimos movimientos)</div>
+                <div style={{display:"flex",alignItems:"flex-end",gap:6,height:52}}>
+                  {[{k:"salida",l:"Salidas",c:N},{k:"entrada",l:"Entradas",c:G},{k:"uso",l:"Usos",c:"#0891B2"},{k:"agotado",l:"Agotados",c:R},{k:"edicion",l:"Ediciones",c:T4}].map(({k,l,c})=>{
+                    const v=actCounts[k]||0;
+                    const h=Math.round((v/actMax)*44)+4;
+                    return(
+                      <div key={k} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",gap:4}}>
+                        <div style={{color:T4,fontSize:9,fontWeight:700}}>{v}</div>
+                        <div style={{width:"100%",height:h,background:c,borderRadius:"4px 4px 2px 2px",opacity:v===0?0.2:1}}/>
+                        <div style={{color:T4,fontSize:8,textAlign:"center",lineHeight:1.2}}>{l}</div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Top categorías */}
+              <div style={{borderTop:`1px solid ${BD}`,paddingTop:16}}>
+                <div style={{color:T3,fontSize:10,fontWeight:700,textTransform:"uppercase",letterSpacing:"0.9px",marginBottom:10}}>Por categoría</div>
+                <div style={{display:"flex",flexDirection:"column",gap:6}}>
+                  {topCats.map(([cat,cnt])=>{
+                    const max=topCats[0][1];
+                    return(
+                      <div key={cat} style={{display:"flex",alignItems:"center",gap:10}}>
+                        <div style={{color:T2,fontSize:11,width:100,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis",flexShrink:0}}>{cat}</div>
+                        <div style={{flex:1,height:5,borderRadius:3,background:BD}}>
+                          <div style={{height:"100%",width:`${cnt/max*100}%`,background:`${N}50`,borderRadius:3,transition:"width 0.4s"}}/>
+                        </div>
+                        <div style={{color:T3,fontSize:11,fontWeight:600,width:20,textAlign:"right",flexShrink:0}}>{cnt}</div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            {/* SOLICITUDES + ALERTAS */}
+            <div style={{display:"flex",flexDirection:"column",gap:12}}>
+
+              {/* Pipeline solicitudes */}
+              <div style={{background:CARD,border:`1px solid ${BD}`,borderRadius:14,padding:"20px 22px",boxShadow:SH,flex:sols.length>0?"0 0 auto":1}}>
+                <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:16}}>
+                  <div style={{color:T1,fontSize:14,fontWeight:700}}>Solicitudes</div>
+                  <span style={{color:T4,fontSize:11}}>{sols.length} total</span>
+                </div>
+                {sols.length===0?(
+                  <div style={{textAlign:"center",padding:"20px 0",color:T4,fontSize:13}}>Sin solicitudes aún</div>
+                ):(
+                  <>
+                    <div style={{display:"flex",flexDirection:"column",gap:4,marginBottom:16}}>
+                      {[{l:"Pendientes",v:sPend,c:A},{l:"Aceptadas",v:sAcep,c:N},{l:"Entregadas",v:sEntr,c:G},{l:"Rechazadas",v:sRech,c:R}].map(s=>(
+                        <div key={s.l} style={{display:"flex",alignItems:"center",gap:10,padding:"9px 12px",borderRadius:8,background:s.v>0?s.c+"0D":BG,border:`1px solid ${s.v>0?s.c+"25":BD}`}}>
+                          <div style={{width:32,height:32,borderRadius:8,background:s.c+"18",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
+                            <span style={{color:s.c,fontSize:14,fontWeight:800}}>{s.v}</span>
+                          </div>
+                          <div style={{flex:1}}>
+                            <div style={{color:s.v>0?T1:T4,fontSize:12,fontWeight:s.v>0?600:400}}>{s.l}</div>
+                            {s.v>0&&s.l==="Pendientes"&&<div style={{color:A,fontSize:10,marginTop:1}}>Requieren revisión</div>}
+                          </div>
+                          {s.v>0&&s.l!=="Rechazadas"&&<ChevronRight size={13} color={s.c+"70"}/>}
+                        </div>
+                      ))}
+                    </div>
+                    {/* Recent */}
+                    <div style={{borderTop:`1px solid ${BD}`,paddingTop:12}}>
+                      <div style={{color:T3,fontSize:10,fontWeight:700,textTransform:"uppercase",letterSpacing:"0.9px",marginBottom:8}}>Últimas solicitudes</div>
+                      <div style={{display:"flex",flexDirection:"column",gap:5}}>
+                        {[...sols].reverse().slice(0,3).map(s=>{
+                          const sc={pendiente:A,aceptada:N,entregada:G,rechazada:R}[s.estado];
+                          const sl={pendiente:"PEND",aceptada:"ACEP",entregada:"ENTR",rechazada:"RECH"}[s.estado];
+                          return(
+                            <div key={s.id} style={{display:"flex",alignItems:"center",gap:8,padding:"7px 9px",borderRadius:7,background:BG}}>
+                              <div style={{flex:1,minWidth:0}}>
+                                <div style={{color:T1,fontSize:11,fontWeight:600,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>{s.itemNombre}</div>
+                                <div style={{color:T4,fontSize:10,marginTop:1}}>{s.nombre} · {s.obra}</div>
+                              </div>
+                              <span style={{background:sc+"15",color:sc,fontSize:8,fontWeight:700,padding:"2px 5px",borderRadius:4,flexShrink:0}}>{sl}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
+
+              {/* Alertas */}
+              <div style={{background:CARD,border:`1px solid ${BD}`,borderRadius:14,padding:"20px 22px",boxShadow:SH,flex:1}}>
+                <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:14}}>
+                  <div style={{color:T1,fontSize:14,fontWeight:700}}>Alertas</div>
+                  {totalAlerts>0
+                    ?<span style={{background:R+"14",color:R,fontSize:11,fontWeight:700,padding:"2px 9px",borderRadius:8}}>{totalAlerts} activa{totalAlerts>1?"s":""}</span>
+                    :<span style={{background:G+"14",color:G,fontSize:11,fontWeight:600,padding:"2px 9px",borderRadius:8}}>Todo OK</span>
+                  }
+                </div>
+                {totalAlerts===0?(
+                  <div style={{textAlign:"center",padding:"16px 0"}}>
+                    <CheckCircle size={32} color={G} style={{marginBottom:8}}/>
+                    <div style={{color:G,fontSize:13,fontWeight:600}}>Sin alertas activas</div>
+                  </div>
+                ):(
+                  <div style={{display:"flex",flexDirection:"column",gap:5}}>
+                    {alertStock.slice(0,3).map(it=>(
+                      <div key={it.id} style={{display:"flex",alignItems:"center",gap:8,padding:"8px 10px",borderRadius:8,background:R+"08",border:`1px solid ${R}20`}}>
+                        <AlertTriangle size={12} color={R} style={{flexShrink:0}}/>
+                        <div style={{flex:1,minWidth:0}}>
+                          <div style={{color:T1,fontSize:11,fontWeight:600,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>{it.nombre}</div>
+                          <div style={{color:R,fontSize:10}}>{it.stock===0?"Agotado":`Stock bajo: ${it.stock} ud.`}</div>
+                        </div>
+                      </div>
+                    ))}
+                    {alertAten.slice(0,2).map(it=>(
+                      <div key={it.id} style={{display:"flex",alignItems:"center",gap:8,padding:"8px 10px",borderRadius:8,background:A+"08",border:`1px solid ${A}20`}}>
+                        <RefreshCw size={12} color={A} style={{flexShrink:0}}/>
+                        <div style={{flex:1,minWidth:0}}>
+                          <div style={{color:T1,fontSize:11,fontWeight:600,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>{it.nombre}</div>
+                          <div style={{color:A,fontSize:10}}>{STATUS[it.estado]?.label||it.estado}</div>
+                        </div>
+                      </div>
+                    ))}
+                    {alertRev.slice(0,2).map(it=>(
+                      <div key={it.id} style={{display:"flex",alignItems:"center",gap:8,padding:"8px 10px",borderRadius:8,background:N+"08",border:`1px solid ${N}18`}}>
+                        <Clock size={12} color={N} style={{flexShrink:0}}/>
+                        <div style={{flex:1,minWidth:0}}>
+                          <div style={{color:T1,fontSize:11,fontWeight:600,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>{it.nombre}</div>
+                          <div style={{color:N,fontSize:10}}>Revisión: {it.proximaRevision}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* ── HERRAMIENTAS EN CAMPO ── */}
+          {ferrFuera.length>0&&(
+            <div style={{background:CARD,border:`1px solid ${BD}`,borderRadius:14,padding:"20px 22px",marginBottom:12,boxShadow:SH}}>
+              <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:16}}>
+                <div style={{color:T1,fontSize:14,fontWeight:700}}>Herramientas en campo</div>
+                <span style={{background:A+"14",color:A,fontSize:11,fontWeight:700,padding:"3px 10px",borderRadius:8}}>{ferrFuera.length} fuera del almacén</span>
+              </div>
+              <div style={{display:"grid",gridTemplateColumns:isMobile?"1fr":"repeat(auto-fill,minmax(270px,1fr))",gap:8}}>
+                {ferrFuera.map(it=>(
+                  <div key={it.id} style={{display:"flex",alignItems:"center",gap:10,padding:"11px 13px",borderRadius:10,border:`1px solid ${BD}`,background:BG}}>
+                    <div style={{width:36,height:36,borderRadius:9,background:N+"12",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}><Wrench size={15} color={N}/></div>
+                    <div style={{flex:1,minWidth:0}}>
+                      <div style={{color:T1,fontSize:12,fontWeight:600,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>{it.nombre}</div>
+                      <div style={{color:T3,fontSize:10,marginTop:2,display:"flex",alignItems:"center",gap:5}}>
+                        <User size={9} color={T4}/><span>{it.quien||"—"}</span>
+                        {it.desde&&<><span style={{color:BD}}>·</span><Clock size={9} color={T4}/><span>{it.desde}</span></>}
+                      </div>
+                    </div>
+                    <span style={{background:it.estado==="en_uso"?N+"12":G+"12",color:it.estado==="en_uso"?N:G,fontSize:8,fontWeight:700,padding:"3px 6px",borderRadius:5,flexShrink:0,whiteSpace:"nowrap"}}>{it.estado==="en_uso"?"EN USO":"PRESTADO"}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* ── ACTIVIDAD RECIENTE ── */}
+          <div style={{background:CARD,border:`1px solid ${BD}`,borderRadius:14,padding:"20px 22px",boxShadow:SH}}>
+            <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:16}}>
+              <div style={{color:T1,fontSize:14,fontWeight:700}}>Registro de actividad</div>
+              <span style={{color:T4,fontSize:11}}>{movs.length} movimientos</span>
+            </div>
+            {movs.length===0?(
+              <div style={{textAlign:"center",color:T4,padding:"24px 0",fontSize:13}}>Sin movimientos registrados</div>
+            ):(
+              <div style={{display:"grid",gridTemplateColumns:isMobile?"1fr":"1fr 1fr",gap:0}}>
+                {[...movs].reverse().slice(0,10).map((mv,i,arr)=>{
+                  const it=items.find(x=>x.id===mv.itemId);
+                  const mc={salida:N,entrada:G,uso:"#0891B2",agotado:R,edicion:T3};
+                  const ml={salida:"Salida",entrada:"Entrada",uso:"Uso",agotado:"Agotado",edicion:"Edición"};
+                  const MI2={salida:ArrowUp,entrada:ArrowDown,uso:Package,agotado:AlertTriangle,edicion:Edit2};
+                  const MIco=MI2[mv.tipo]||Info;
+                  const color=mc[mv.tipo]||T3;
+                  const isLast=i===arr.length-1;
+                  const isRightCol=i%2===1;
+                  return(
+                    <div key={mv.id} style={{display:"flex",alignItems:"center",gap:10,padding:"9px 10px",borderBottom:!isLast&&!(isMobile&&i===arr.length-2)?`1px solid ${BD}`:"none",borderRight:!isMobile&&!isRightCol?`1px solid ${BD}`:"none"}}>
+                      <div style={{width:28,height:28,borderRadius:7,background:color+"12",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}><MIco size={12} color={color}/></div>
+                      <div style={{flex:1,minWidth:0}}>
+                        <div style={{color:T1,fontSize:11,fontWeight:600,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>{it?it.nombre:<span style={{color:T4,fontStyle:"italic"}}>Artículo eliminado</span>}</div>
+                        <div style={{color:T4,fontSize:10,marginTop:1,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>{mv.quien&&`${mv.quien} · `}{mv.fecha}</div>
+                      </div>
+                      <span style={{fontSize:8,fontWeight:700,color:color,background:color+"14",padding:"2px 5px",borderRadius:4,flexShrink:0,whiteSpace:"nowrap"}}>{ml[mv.tipo]||mv.tipo}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
 // ─── LAYOUT ───────────────────────────────────────────────
 function useLayout() {
   const get=()=>({w:window.innerWidth,h:window.innerHeight,isMobile:window.innerWidth<768,isTablet:window.innerWidth>=768&&window.innerWidth<1200,isDesktop:window.innerWidth>=1200,isLandscape:window.innerWidth>window.innerHeight});
@@ -1070,8 +1493,9 @@ export default function AldagoApp() {
   // ── RETURNS CONDICIONALES AL FINAL (después de todos los hooks) ──
   if(!rol) return <RolSelector onSelect={setRol}/>;
   if(rol==="trabajador") return <VistaTrabajador items={items} sols={sols} setSols={setSols} onSalir={()=>setRol(null)}/>;
+  if(rol==="direccion") return <PanelDireccion items={items} movs={movs} sols={sols} onSalir={()=>setRol(null)}/>;
 
-  // ── RENDER PRINCIPAL (responsable / dirección) ──────────
+  // ── RENDER PRINCIPAL (responsable) ──────────────────────
   const DarkBtn=({invert})=>(<button onClick={toggleDark} style={{background:invert?"rgba(255,255,255,0.1)":C.s2,border:`1px solid ${invert?"rgba(255,255,255,0.14)":C.border}`,borderRadius:8,cursor:"pointer",padding:8,display:"flex",alignItems:"center",justifyContent:"center"}}>{dark?<Sun size={16} color={invert?"rgba(255,255,255,0.8)":C.t2}/>:<Moon size={16} color={invert?"rgba(255,255,255,0.8)":C.t2}/>}</button>);
 
   const titles={inventario:"Inventario",herramientas:"Herramientas",ubicaciones:"Ubicaciones",pendientes:"Pendientes",revision:"Revisión guiada",historial:"Historial",solicitudes:"Solicitudes"};
